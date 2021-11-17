@@ -43,3 +43,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# include and exclude file
+/general
+test.html
+*.har

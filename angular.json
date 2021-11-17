@@ -15,7 +15,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "./src/webpack.config.js", 
           "options": {
             "outputPath": "dist/angularTask",
             "index": "src/index.html",
@@ -53,6 +53,28 @@
               ],
               "outputHashing": "all"
             },
+
+            "Developer": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -65,7 +87,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "./src/webpack.config.js",
           "configurations": {
             "production": {
               "browserTarget": "angularTask:build:production"
